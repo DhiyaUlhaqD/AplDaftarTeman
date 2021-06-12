@@ -41,7 +41,8 @@ class MyListData : AppCompatActivity() {
         getReference.child("Admin").child(getUserID).child("DataTeman")
             .addValueEventListener(object : ValueEventListener {
             override fun onDataChange(datasnapshot: DataSnapshot) {
-                if (datasnapshot.exists()){
+                if (datasnapshot.exists()) {
+                    dataTeman.clear()
                     for (snapshot in datasnapshot.children) {
                         val teman = snapshot.getValue(data_teman::class.java)
                         teman?.key = snapshot.key
